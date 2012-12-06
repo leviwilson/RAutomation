@@ -74,6 +74,10 @@ module RAutomation
                         [:long], :int
         attach_function :select_data_item, :RA_SelectDataItem,
                         [:long, :int], :void
+        attach_function :expand_by_value, :RA_ExpandItemByValue,
+                        [:long, :string], :void
+        attach_function :expand_by_index, :RA_ExpandItemByIndex,
+                        [:long, :int], :void
         attach_function :data_item_exists_by_value, :RA_DataItemExistsByValue,
                         [:long, :string], :bool
         attach_function :data_item_exists_by_index, :RA_DataItemExistsByIndex,
