@@ -80,6 +80,8 @@ module RAutomation
                         [:long, :int], :void
         attach_function :collapse_by_value, :RA_CollapseItemByValue,
                         [:long, :string], :void
+        attach_function :collapse_by_index, :RA_CollapseItemByIndex,
+                        [:long, :int], :void
         attach_function :data_item_exists_by_value, :RA_DataItemExistsByValue,
                         [:long, :string], :bool
         attach_function :data_item_exists_by_index, :RA_DataItemExistsByIndex,
