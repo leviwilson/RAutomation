@@ -84,16 +84,20 @@ module RAutomation
                         [:long, :int], :void
         attach_function :data_item_exists_by_value, :RA_DataItemExistsByValue,
                         [:long, :string], :bool
-        attach_function :data_item_exists_by_index, :RA_DataItemExistsByIndex,
-                        [:long, :int], :bool
+        attach_function :RA_DataItemExists,
+                        [:long, :int, :int], :bool
                         
-        attach_function :RA_RowValueAt,
-                        [:long, :int, :pointer, :int], :void
+        attach_function :RA_CellValueAt,
+                        [:long, :int, :int, :pointer, :int], :void
 
-        def self.row_value_at(hwnd, which_index)
+        def self.cell_value_at(hwnd, row, column=0)
           string = FFI::MemoryPointer.new :char, 1024
-          RA_RowValueAt hwnd, which_index, string, 1024
+          RA_CellValueAt hwnd, row, column, string, 1024
           string.read_string
+        end
+
+        def self.data_item_exists(hwnd, row, column=0)
+          RA_DataItemExists hwnd, row, column
         end
       end
     end
